@@ -1,0 +1,76 @@
+<!-- sldsValidatorIgnore -->
+<!-- sldsValidatorIgnore -->
+<!-- sldsValidatorIgnore -->
+
+
+<template>
+    <lightning-card title="Lista de produtos" icon-name="custom:custom51">
+        <template if:true={prodList}>
+            <lightning-datatable data={prodList} columns={columns} key-field="Id" onrowaction={handleRowAction}>
+            </lightning-datatable>
+        </template>
+        <template if:true={error}>
+            {error}
+        </template>
+    </lightning-card>
+
+    <template if:true={modalContainer}>
+        <section class="slds-modal slds-fade-in-open">
+            <div class="slds-modal__container">
+                <header class="slds-modal__header">
+                    <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close"
+                        onclick={closeModalAction}>
+                        <lightning-icon icon-name="utility:close" alternative-text="close" variant="inverse"
+                            size="small"></lightning-icon>
+                    </button>
+                    <h2 class="slds-text-heading_medium slds-hyphenate">Datos del producto</h2>
+                </header>
+                <div class="slds-modal__content slds-p-around_medium">
+
+                    <div class="slds-form-element slds-form-element_horizontal slds-is-editing">
+                        <label class="slds-form-element__label" for="horizontal-form-element-id-01">Nome do produto</label>
+                        <div class="slds-form-element__control">
+                          <input type="text" id="horizontal-form-element-id-01" readonly="" class="slds-input" value={prodRow.Name} />
+                        </div>
+                    </div>
+
+                    <div class="slds-form-element slds-form-element_horizontal slds-is-editing">
+                        <label class="slds-form-element__label" for="horizontal-form-element-Description">Descrição</label>
+                        <div class="slds-form-element__control">
+                          <input type="text" id="horizontal-form-element-Description" readonly="" class="slds-input" value={prodRow.Description} />
+                        </div>
+                    </div>
+
+                    <div class="slds-form-element slds-form-element_horizontal slds-is-editing">
+                        <label class="slds-form-element__label" for="horizontal-form-element-QuantidadeEmEstoque">Nome do produto</label>
+                        <div class="slds-form-element__control">
+                          <input type="text" id="horizontal-form-element-QuantidadeEmEstoque" readonly="" class="slds-input" value={prodRow.QuantidadeEmEstoque__c} />
+                        </div>
+                    </div>
+
+                    <div class="slds-form-element slds-form-element_horizontal slds-is-editing">
+                        <label class="slds-form-element__label" for="horizontal-form-element-Preco">Preço</label>
+                        <div class="slds-form-element__control">
+                          <input type="text" id="horizontal-form-element-Preco" readonly="" class="slds-input" value={prodRow.Preco__c} />
+                        </div>
+                    </div>
+
+                    <div class="slds-form-element slds-form-element_horizontal slds-is-editing">
+                        <label class="slds-form-element__label" for="horizontal-form-element-imagem">Imagem</label>
+                        <div class="slds-form-element__control">
+                            <img src={prodRow.Imagem__c}>
+                        </div>
+                    </div>                     
+                </div>
+                <footer class="slds-modal__footer">
+                    <lightning-button variant="brand" label="Add to car" title="Add to car"
+                        onclick={handleClick}></lightning-button>&nbsp;
+                    <lightning-button variant="brand" label="Close" title="Close"
+                        onclick={closeModalAction}></lightning-button>
+                </footer>
+            </div>
+        </section>
+        <div class="slds-backdrop slds-backdrop_open"></div>
+    </template>
+
+</template>

@@ -1,0 +1,13 @@
+<template>
+    <lightning-card  title="Carrinho de compras" icon-name="custom:custom93">
+        <lightning-button label="Comprar" slot="actions"></lightning-button>
+        <ul class="slds-m-around_medium">
+            <template for:each={prodRow} for:item="prodItem">
+                <li key={prodItem}>
+                    {prodItem}
+                </li>
+            </template>
+        </ul>
+        <p slot="footer">Produtos adicionados: {prodRow.length}</p>
+    </lightning-card>
+</template>
